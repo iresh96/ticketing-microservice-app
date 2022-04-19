@@ -5,12 +5,12 @@ deploy:
     manifests:
       - ./infra/k8s/*
 build:
-  # local:
-  #   push: false
-  googleCloudBuild:
-    projectId: pro-zone-347312
+  local:
+    push: false
+  # googleCloudBuild:
+  #   projectId: pro-zone-347312
   artifacts:
-    - image: us.gcr.io/pro-zone-347312/auth
+    - image: iresh96/auth
       context: auth
       docker:
         dockerfile: Dockerfile

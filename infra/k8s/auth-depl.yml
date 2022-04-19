@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: us.gcr.io/pro-zone-347312/auth
+          image: iresh96/auth
 ---
 apiVersion: v1
 kind: Service

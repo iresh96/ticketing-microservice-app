@@ -10,10 +10,12 @@ import { signupRouter } from "./routes/signup";
 import { errorHandler } from "./middleware/error-handler";
 import { NotFoundError } from "./errors/not-found-error";
 
- const app = express();
+const app = express();
 app.set("trust proxy", true);
 app.use(json());
-app.use(cookieSession({ signed: false, secure: true }));
+app.use(
+  cookieSession({ signed: false, secure: process.env.NODE_ENV !== "test" })
+);
 
 app.use(currentUserRouter);
 app.use(signinRouter);
@@ -26,4 +28,4 @@ app.all("*", async () => {
 
 app.use(errorHandler);
 
-export {app}
+export { app };

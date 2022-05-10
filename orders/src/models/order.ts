@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 import { OrderStatus } from "@sim96tickets/common";
 import { TicketDoc } from "./ticket";
 
+export { OrderStatus };
+
 interface OrderAttrs {
   userId: string;
   status: OrderStatus;
@@ -17,7 +19,7 @@ interface OrderDoc extends mongoose.Document {
 }
 
 interface OrderModel extends mongoose.Model<OrderDoc> {
-  builds(attrs: OrderAttrs): OrderDoc;
+  build(attrs: OrderAttrs): OrderDoc;
 }
 
 const orderSchema = new mongoose.Schema(

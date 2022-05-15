@@ -7,7 +7,7 @@ import {
   requireAuth,
   NotAuthorizedError,
 } from "@sim96tickets/common";
-import { TicketUpdatedPublisher } from "../events/puplishers/ticket-updated-publisher";
+import { TicketUpdatedPublisher } from "../events/publishers/ticket-updated-publisher";
 import { natsWrapper } from "../nats-wrapper";
 
 const router = express.Router();

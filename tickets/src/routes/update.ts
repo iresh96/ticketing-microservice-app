@@ -6,6 +6,7 @@ import {
   validateRequest,
   requireAuth,
   NotAuthorizedError,
+  BadRequestError,
 } from "@sim96tickets/common";
 import { TicketUpdatedPublisher } from "../events/publishers/ticket-updated-publisher";
 import { natsWrapper } from "../nats-wrapper";
@@ -27,6 +28,10 @@ router.put(
 
     if (!ticket) {
       throw new NotFoundError();
+    }
+
+    if (ticket.orderId) {
+      throw new BadRequestError("Cannot edit reserved Ticket.");
     }
 
     if (ticket.userId !== req.currentUser!.id) {

@@ -33,16 +33,18 @@ const OrderShow = ({ order, currentUser }) => {
   }
 
   return (
-    <div>
-      Time left to pay: {timeLeft} seconds
-      <StripeCheckout
-        token={({ id }) => doRequest({ token: "tok_visa" })}
-        stripeKey="pk_test_JMdyKVvf8EGTB0Fl28GsN7YY"
-        amount={order.ticket.price * 100}
-        email={currentUser.email}
-      />
-      {errors}
-    </div>
+    <>
+      <div>Time left to pay: {timeLeft} seconds</div>
+      <div>
+        <StripeCheckout
+          token={({ id }) => doRequest({ token: "tok_visa" })}
+          stripeKey="pk_test_JMdyKVvf8EGTB0Fl28GsN7YY"
+          amount={order.ticket.price * 100}
+          email={currentUser.email}
+        />
+        {errors}
+      </div>
+    </>
   );
 };
 

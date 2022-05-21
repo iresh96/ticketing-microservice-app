@@ -8,7 +8,13 @@ const Landing = ({ currentUser, tickets }) => {
         <td>{ticket.price}</td>
         <td>
           <Link href={`/tickets/[ticketId]`} as={`/tickets/${ticket.id}`}>
-            <a>View</a>
+            <a
+              style={{
+                "text-decoration": "none",
+              }}
+            >
+              View
+            </a>
           </Link>
         </td>
       </tr>
@@ -28,6 +34,7 @@ const Landing = ({ currentUser, tickets }) => {
         </thead>
         <tbody>{ticketList}</tbody>
       </table>
+      <div>{!ticketList.length && "No tickets available at the moment!!!"}</div>
     </div>
   );
 };

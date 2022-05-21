@@ -23,6 +23,7 @@ router.post(
   validateRequest,
   async (req: Request, res: Response) => {
     const { token, orderId } = req.body;
+    console.log("token: ", token);
     const order = await Order.findById(orderId);
 
     if (!order) {
@@ -42,6 +43,7 @@ router.post(
       amount: order.price * 100,
       source: token,
     });
+    console.log("charge: ", charge);
 
     const payment = Payment.build({
       orderId,

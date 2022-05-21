@@ -47,7 +47,7 @@ it("fetches orders for an particular user", async () => {
     .get("/api/orders")
     .set("Cookie", userTwo)
     .expect(200);
-  console.log(response.body);
+
   // Make sure we only got the orders for User #2
   expect(response.body.length).toEqual(2);
   expect(response.body[0].id).toEqual(orderOne.id);
